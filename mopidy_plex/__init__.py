@@ -27,6 +27,7 @@ class Extension(ext.Extension):
         schema['server'] = config.String()
         schema['username'] = config.String()
         schema['password'] = config.Secret()
+        schema['music_library_section_id'] = config.String()
         return schema
 
     def setup(self, registry):
