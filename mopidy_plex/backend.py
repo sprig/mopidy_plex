@@ -41,6 +41,7 @@ class PlexBackend(pykka.ThreadingActor, backend.Backend):
         self.plex = self.account.resource(config['plex']['server']).connect()
         self.music = [s for s in self.plex.library.sections() if s.TYPE == MusicSection.TYPE][0]
         logger.debug('Found music section on plex server %s: %s', self.plex, self.music)
+        self.music_library_section_id = config['plex']['music_library_section_id']
         self.uri_schemes = ['plex', ]
         self.library = PlexLibraryProvider(backend=self)
         self.playback = PlexPlaybackProvider(audio=audio, backend=self)
